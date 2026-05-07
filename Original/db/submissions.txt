@@ -1,0 +1,20 @@
+---
+id=SUB-1778140842676
+timestamp=2026-05-07 10:00:42
+keywords=
+author=Dr. Jane Smith
+abstract=
+title=AI in Healthcare: A Systematic Review
+category=Computer Science
+---
+id=SUB-1778144445968
+timestamp=2026-05-07 11:00:45
+keywords=
+abstract=
+category=Computer Science
+---
+id=SUB-1778144460142
+timestamp=2026-05-07 11:01:00
+keywords=
+abstract=
+category=Computer Science

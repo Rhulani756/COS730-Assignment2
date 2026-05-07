@@ -1,0 +1,32 @@
+# Compiled Java classes
+*.class
+
+# Database persistence files - generated at runtime, not source code
+db/submissions.txt
+db/scores.txt
+db/workload.txt
+db/conflicts.txt
+
+# Keep reviewers.txt checked in as it acts as seed config
+!db/reviewers.txt
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/

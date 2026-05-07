@@ -8,7 +8,7 @@ public class SubmissionController {
     private ReviewerManager reviewerManager;
     private EvaluationManager evaluationManager;
 
-    public SubmissionController(Validator validator, Database database, 
+    public SubmissionController(Validator validator, Database database,
                                 ReviewerManager reviewerManager, EvaluationManager evaluationManager) {
         this.validator = validator;
         this.database = database;
@@ -16,12 +16,14 @@ public class SubmissionController {
         this.evaluationManager = evaluationManager;
     }
 
-    public String submit(Map<String, Object> data) { 
+    public String submit(Map<String, Object> data) {
+
         if (!validator.validateFormat(data)) {
             return "error"; 
         }
 
-        database.saveSubmission(data); 
+        String confirmation = database.saveSubmission(data);
+        System.out.println("SubmissionController: DB confirmed save → " + confirmation);
 
         List<String> filteredReviewersData = reviewerManager.getAvailableReviewers();
         List<Reviewer> reviewers = new ArrayList<>();
@@ -30,18 +32,18 @@ public class SubmissionController {
         }
 
         for (Reviewer reviewer : reviewers) {
-            reviewer.assignReview(); 
+            reviewer.assignReview();
         }
 
-        evaluationManager.startEvaluation(); 
+        evaluationManager.startEvaluation();
 
         for (Reviewer reviewer : reviewers) {
-            reviewer.submitReviewScore(85, evaluationManager); 
+            reviewer.submitReviewScore(85, evaluationManager);
         }
 
-        evaluationManager.calculateAverage(); 
-        evaluationManager.checkConsensus();   
-        evaluationManager.applyRules();       
+        evaluationManager.calculateAverage();
+        evaluationManager.checkConsensus();
+        evaluationManager.applyRules();
 
         return "success";
     }
