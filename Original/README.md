@@ -1,6 +1,6 @@
 # COS 730 – Assignment 2: Intelligent Submission and Review System
 
-**Student:** [Rhulani Matiane u23875616]  
+**Student:** Rhulani Matiane u23875616  
 **Due:** 14 May 2026  
 **Module:** COS 730 – Software Engineering
 
