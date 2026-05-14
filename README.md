@@ -201,8 +201,4 @@ Each benchmark measures:
 
 > Execution time is equivalent because file I/O dominates runtime and masks the savings from eliminating three in-memory interactions. The structural improvements are measurable in interaction count, complexity, and coupling.
 
----
 
-## Sequence Diagram
-
-The optimised sequence diagram (`Optimised_Sequence_Diagram.drawio`) can be opened at [app.diagrams.net](https://app.diagrams.net). It matches the style of the original baseline diagram and shows all structural changes from Task 4.
