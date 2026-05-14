@@ -1,13 +1,6 @@
 # COS 730 -- Assignment 2
 ## Intelligent Submission and Review System
 
-**Student:** Rhulani Matiane  
-**Student Number:** u23875616  
-**Module:** COS 730 -- Software Engineering  
-**Institution:** University of Pretoria  
-**Due Date:** 14 May 2026
-
----
 
 ## Overview
 
