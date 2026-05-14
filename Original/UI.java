@@ -5,12 +5,6 @@ import java.awt.event.*;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Baseline Implementation – Task 1 (GUI Version)
- * Corresponds to: UI lifeline in the sequence diagram.
- * Swing-based graphical interface replacing the console UI.
- * The Researcher interacts through this window to submit research artefacts.
- */
 public class UI extends JFrame {
 
     private SubmissionController controller;

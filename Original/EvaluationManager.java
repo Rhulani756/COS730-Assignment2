@@ -5,9 +5,11 @@ public class EvaluationManager {
     private Database database;
     private NotificationService notificationService;
     private List<Integer> scores;
+    private int fixedScore = -1; 
 
-    private static final int ACCEPTANCE_THRESHOLD = 75;
-    private static final int REJECTION_THRESHOLD  = 50;
+    // Thresholds (baseline: hardcoded constants per diagram intent)
+    private static final int ACCEPTANCE_THRESHOLD = 60;
+    private static final int REJECTION_THRESHOLD  = 40;
 
     public EvaluationManager(Database database, NotificationService notificationService) {
         this.database = database;
@@ -15,17 +17,29 @@ public class EvaluationManager {
         this.scores = new ArrayList<>();
     }
 
+    // Test constructor — forces all reviewer scores to a fixed value. 
+    public EvaluationManager(Database database, NotificationService notificationService, int fixedScore) {
+        this.database = database;
+        this.notificationService = notificationService;
+        this.scores = new ArrayList<>();
+        this.fixedScore = fixedScore;
+    }
+
+    // startEvaluation() – initialises evaluation state for a fresh run
     public void startEvaluation() {
         scores.clear();
         System.out.println("EvaluationManager: Evaluation started, scores cleared.");
     }
 
+    // submitScore(score) – called by each Reviewer; persists to DB
     public void submitScore(int score) {
-        this.scores.add(score);
-        this.database.saveScore(score);
-        System.out.println("EvaluationManager: Score submitted → " + score);
+        int s = fixedScore >= 0 ? fixedScore : score;
+        this.scores.add(s);
+        this.database.saveScore(s);
+        System.out.println("EvaluationManager: Score submitted → " + s);
     }
 
+    // calculateAverage() – computes average of collected scores
     public double calculateAverage() {
         if (scores.isEmpty()) return 0.0;
         int sum = 0;
@@ -35,6 +49,7 @@ public class EvaluationManager {
         return avg;
     }
 
+    // checkConsensus() – checks whether all reviewers agree (all above or all below threshold)
     public boolean checkConsensus() {
         if (scores.isEmpty()) return false;
         boolean allAccept = scores.stream().allMatch(s -> s >= ACCEPTANCE_THRESHOLD);
@@ -44,6 +59,10 @@ public class EvaluationManager {
         return consensus;
     }
 
+    // applyRules() – determines outcome and delegates notification
+    // [alt: accepted] notifyAcceptance()
+    // [alt: rejected] notifyRejection()
+    // [alt: revision] notifyRevision()
     public void applyRules() {
         double avg = calculateAverage();
         String outcome;

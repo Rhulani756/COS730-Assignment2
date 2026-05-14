@@ -1,14 +1,16 @@
 public class Reviewer {
     private String name;
+    private boolean assigned = false;
 
     public Reviewer(String name) {
         this.name = name;
     }
 
-    public void assignReview() {
+    public String getName() {
+        return name;
     }
 
-    public void submitReviewScore(int score, EvaluationManager evaluationManager) {
-        evaluationManager.submitScore(score);
+    public void assignReview() {
+        this.assigned = true;
     }
 }

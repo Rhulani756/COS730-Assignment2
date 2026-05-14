@@ -1,0 +1,2 @@
+BASELINE -- avg: 1.2493 ms/submission
+Throughput: 800 submissions/sec

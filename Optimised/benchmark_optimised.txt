@@ -1,0 +1,2 @@
+OPTIMISED -- avg: 1.2637 ms/submission
+Throughput: 791 submissions/sec
